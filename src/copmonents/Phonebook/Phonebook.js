@@ -2,8 +2,8 @@ import React from "react";
 import s from "./Phonebook.module.css";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import fadeStyles from "./fadePhonebook.module.css";
-
-
+import { connect } from "react-redux";
+import contactsActions from "../../redux/contacts-actions";
 
 function Phonebook({ contacts, onDeleteContact }) {
   return (
@@ -23,4 +23,20 @@ function Phonebook({ contacts, onDeleteContact }) {
   );
 }
 
-export default Phonebook;
+const getVisibleContact = (allContact, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+
+  return allContact.filter((contact) =>
+    contact.name.toLocaleLowerCase().includes(normalizedFilter)
+  );
+};
+
+const mapStateToProps = ({ contacts: { contacts, filter } }) => ({
+  contacts: getVisibleContact(contacts, filter),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onDeleteContact: (id) => dispatch(contactsActions.deleteContact(id)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Phonebook);
