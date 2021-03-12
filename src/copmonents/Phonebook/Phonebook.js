@@ -31,8 +31,8 @@ const getVisibleContact = (allContact, filter) => {
   );
 };
 
-const mapStateToProps = ({ contacts: { contacts, filter } }) => ({
-  contacts: getVisibleContact(contacts, filter),
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  contacts: getVisibleContact(items, filter),
 });
 
 const mapDispatchToProps = (dispatch) => ({

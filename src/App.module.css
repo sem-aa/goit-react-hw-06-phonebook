@@ -9,12 +9,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.alert {
-  background-color: red;
-  color: white;
-  height: 40px;
-  width: 120px;
-  font-size: small;
-  border-radius: 4%;
-}

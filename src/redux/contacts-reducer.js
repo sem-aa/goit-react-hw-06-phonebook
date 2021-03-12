@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import types from "./contacts-types";
 
-const contacts = (
+const items = (
   state = [
     { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
     { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
@@ -32,6 +32,6 @@ const filter = (state = "", { type, payload }) => {
 };
 
 export default combineReducers({
-  contacts,
+  items,
   filter,
 });
